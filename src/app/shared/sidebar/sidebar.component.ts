@@ -7,6 +7,7 @@ import { Component } from '@angular/core';
 })
 export class SidebarComponent {
 
+  nombreUsuario= localStorage.getItem('nombre');
 
   public menuItems:any[]=[{
 
@@ -21,6 +22,9 @@ export class SidebarComponent {
   }];
 
   logout(){
+
+    localStorage.removeItem('usuario');
+    localStorage.removeItem('nombre');
 
     location.href='login';
 

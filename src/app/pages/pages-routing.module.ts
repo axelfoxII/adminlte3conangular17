@@ -4,10 +4,11 @@ import { PagesComponent } from './pages.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { HeroesComponent } from './heroes/heroes.component';
 import { ToasterComponent } from './toaster/toaster.component';
+import { authGuard } from '../guards/auth.guard';
 
 const routes: Routes = [
 
-  {path:'dashboard', component:PagesComponent,
+  {path:'dashboard', component:PagesComponent, canActivate:[authGuard],
 
   children:[
 
