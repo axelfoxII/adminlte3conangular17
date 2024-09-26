@@ -1,14 +1,14 @@
 <div align="center">
 	<img src="https://i.ibb.co/7Rnqp8v/adminltefinal.jpg" alt="adminltefinal" border="0">
 </div>
-PASOS PARA EL USO DE LA PLANTILLA ADMINLET3 CON ANGULAR
-1.Descargar la base de datos de JSON SERVER 
-    𝐉𝐒𝐎𝐍-𝐒𝐞𝐫𝐯𝐞𝐫 : <a href="https://www.npmjs.com/package/json-server">JSON-SERVER BASE DE DATOS</a>
-2.Instalar JSON SERVER de forma Global
-    npm install -g json-server
-3.Entrar a la carpeta donde descargaron la base de datos
-    Ejcutar el siguiente comando en su comand o git bash: json-server --watch db.json
-4. Arrancar el proyecto desde VS Cdde con ng serve    
+PASOS PARA EL USO DE LA PLANTILLA ADMINLET3 CON ANGULAR <br>
+1.Descargar la base de datos de JSON SERVER <br>
+    𝐉𝐒𝐎𝐍-𝐒𝐞𝐫𝐯𝐞𝐫 : <a href="https://www.npmjs.com/package/json-server">JSON-SERVER BASE DE DATOS</a><br>
+2.Instalar JSON SERVER de forma Global<br>
+    npm install -g json-server<br>
+3.Entrar a la carpeta donde descargaron la base de datos<br>
+    Ejcutar el siguiente comando en su comand o git bash: json-server --watch db.json<br>
+4. Arrancar el proyecto desde VS Cdde con ng serve<br>    
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.2.2.
 
