@@ -1,0 +1,57 @@
+/* Asegura que todos los íconos estén alineados correctamente */
+.nav-icon {
+    min-width: 30px;  /* Ajusta el tamaño mínimo del contenedor del ícono */
+    text-align: center; /* Centra el ícono dentro de su contenedor */
+  }
+  
+  /* Alineación de los íconos y texto en el menú */
+  .nav-link {
+    display: flex;
+    align-items: center;  /* Alinea verticalmente el ícono y el texto */
+  }
+  
+  /* Ajusta los márgenes de los textos de los submenús */
+  .nav-link p {
+    margin: 0;  /* Elimina cualquier margen extra en el texto */
+    flex-grow: 1;  /* Asegura que el texto ocupe el espacio restante */
+  }
+  
+  /* Aumenta el margen izquierdo de los íconos del submenú */
+  .nav-treeview .nav-item .nav-link .ml-4 {
+    margin-left: 15px; /* Ajusta este valor para moverlo más a la derecha */
+  }
+  
+  /* Alineación específica para submenús anidados */
+  .nav-treeview .nav-item .nav-link .ml-5 {
+    margin-left: 25px; /* Ajusta este valor para moverlo más a la derecha */
+  }
+  
+  /* Elimina líneas entre los elementos */
+  .nav-treeview {
+    padding-left: 0; /* Elimina cualquier padding adicional */
+  }
+  
+  .nav-item {
+    border: none; /* Elimina cualquier borde de los elementos del menú */
+  }
+  
+/* Aplica opacidad solo al fondo del sidebar */
+.main-sidebar {
+  background-color: rgba(0, 0, 0, 0.8); /* Fondo con 80% de opacidad */
+}
+
+/* Fuerza el color blanco en todos los textos e íconos dentro del sidebar */
+.main-sidebar, 
+.main-sidebar .nav-link, 
+.main-sidebar .nav-link i, 
+.main-sidebar .nav-link p,
+.main-sidebar .brand-link span,
+.main-sidebar .user-panel .info a, 
+.main-sidebar .nav-treeview .nav-link p {
+  color: white !important; /* Fuerza el color blanco */
+}
+
+/* Asegura que los íconos también sean blancos */
+.main-sidebar .nav-link i {
+  color: white !important;
+}
