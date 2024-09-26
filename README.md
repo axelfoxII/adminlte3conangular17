@@ -11,6 +11,7 @@
 <b>4. Ejecute <i>ng serve</i> para un servidor de desarrollo y navegue hasta http://localhost:4200/. La aplicación se recargará automáticamente si cambia alguno de los archivos fuente.</b><br><br><br>
 
  <h3>Ver video de instalación en YouTube</h3>
-[![YouTube](https://img.shields.io/badge/YouTube-FF0000?style=for-the-badge&logo=youtube&logoColor=white)](https://youtu.be/KQTb9IfBQJs) 
+[![YouTube](https://img.shields.io/badge/YouTube-FF0000?style=for-the-badge&logo=youtube&logoColor=white)](https://youtu.be/KQTb9IfBQJs)
+ 
 
 
