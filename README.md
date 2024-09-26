@@ -3,7 +3,7 @@
 </div>
 <b>PASOS PARA EL USO DE LA PLANTILLA ADMINLET3 CON ANGULAR</b><br><br> 
 <b>1. Descargar la base de datos de JSON SERVER del proyecto</b><br><br>
-    𝐉𝐒𝐎𝐍-𝐒𝐞𝐫𝐯𝐞𝐫 : <a href="https://drive.google.com/file/d/1I0zUnOlSCtrYpayzS7q1XJ5B3XNGLSPe/view?usp=sharing" target="_blank">JSON-SERVER BASE DE DATOS</a><br><br>
+    BD del Proyecto : <a href="https://drive.google.com/file/d/1I0zUnOlSCtrYpayzS7q1XJ5B3XNGLSPe/view?usp=sharing" target="_blank">JSON-SERVER BASE DE DATOS</a><br><br>
 <b>2. Instalar JSON SERVER de forma Global</b><br><br>
     npm install -g json-server<br><br>
 <b>3. Entrar a la carpeta donde descargaron la base de datos</b><br><br>
