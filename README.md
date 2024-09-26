@@ -10,7 +10,4 @@
     Ejecutar el siguiente comando en su comand de windows ó git bash : <i>json-server --watch db.json</i><br><br>
 <b>4. Ejecute <i>ng serve</i> para un servidor de desarrollo y navegue hasta http://localhost:4200/. La aplicación se recargará automáticamente si cambia alguno de los archivos fuente.</b><br><br><br>
 
-### Ver video de instalación en YouTube
-
-[![YouTube Icon](https://upload.wikimedia.org/wikipedia/commons/4/42/YouTube_icon_%282013-2017%29.png)](https://youtu.be/KQTb9IfBQJs)
-
+### Ver video de instalación en [![YouTube Icon](https://upload.wikimedia.org/wikipedia/commons/4/42/YouTube_icon_%282013-2017%29.png)](https://youtu.be/KQTb9IfBQJs)
