@@ -12,4 +12,5 @@
 
 ### Ver video de instalación en YouTube
 
-[![Ver en YouTube](https://img.shields.io/badge/YouTube-FF0000?style=for-the-badge&logo=youtube&logoColor=white)](https://youtu.be/KQTb9IfBQJs)
+[![YouTube Icon](https://upload.wikimedia.org/wikipedia/commons/4/42/YouTube_icon_%282013-2017%29.png)](https://youtu.be/KQTb9IfBQJs)
+
