@@ -1,54 +1,54 @@
-import { Component } from '@angular/core';
-import { UsuariosService } from '../usuarios.service';
-import { Usuarios } from '../../interfaces/usuarios.interface';
+import { Component, OnInit } from '@angular/core';
+import { NgForm } from '@angular/forms';
+import { AuthService } from '../../services/auth.service';
 import Swal from 'sweetalert2';
+import { UsuarioModel } from '../../models/usuario.model';
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrl: './login.component.css'
 })
-export class LoginComponent {
-  usuario: string = '';
+export class LoginComponent implements OnInit {
+  user: string = '';
+  usuario=new UsuarioModel();
   pass: string = '';
   passwordFieldType: string = 'password';
-  usuarios!: Usuarios;
+  usuarios!: UsuarioModel;
+  rememberMe:boolean = false;
 
-  constructor(private usurioSvc: UsuariosService) {}
+  constructor(private authSvc: AuthService) {}
+  ngOnInit() {
+    const savedEmail = localStorage.getItem('email');
+    if (savedEmail) {
+      this.user = savedEmail;
+      this.usuario.email = savedEmail;  // Asignar solo el correo
+      this.rememberMe = true;
+    }
+  }
 
   togglePasswordVisibility() {
     this.passwordFieldType = this.passwordFieldType === 'password' ? 'text' : 'password';
   }
-
-  onSubmit() {
-    this.usurioSvc.obtenerUsuario(this.usuario, this.pass).subscribe(
-      (res: any) => {
-        console.log(res);
-        if (res && res.length > 0) {
-          const usuario = res[0];
-          this.usuarios = {
-            username: usuario.username,
-            password: usuario.password
-          };
-          localStorage.setItem('usuario', 'true');
-          localStorage.setItem('nombre', this.usuarios.username);
-
-          location.href = 'dashboard';
-        } else {
-          Swal.fire({
-            position: "top-end",
-            icon: "error",
-            title: "No se encontro ningun usuario",
-            showConfirmButton: false,
-            timer: 2500
-          });
-
-          this.usuario = '';
-          this.pass = '';
-        }
-      }
-    );
-  }
  
+
+    login(forma:NgForm){
+
+    
+      this.usuario = {
+        email: forma.value.email,
+        password: forma.value.password
+      }
+      if (this.rememberMe) {
+        localStorage.setItem('email', forma.value.email);
+      } else {
+        localStorage.removeItem('email');
+      }
+      this.authSvc.login(this.usuario);
+  
+    }
+  
+   
+  
 
 }

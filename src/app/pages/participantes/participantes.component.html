@@ -1,0 +1,86 @@
+<!-- Main content -->
+<section class="content ">
+
+  <!-- Default box -->
+  <div class="card">
+    <div class="card-header">
+      <h3 class="card-title" style="color: black;"><i class="fa fa-users"></i>  Lista de Participantes</h3>
+
+      <div class="card-tools">
+        <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
+          <i class="fas fa-minus"></i>
+        </button>
+        <button type="button" class="btn btn-tool" data-card-widget="remove" title="Remove">
+          <i class="fas fa-times"></i>
+        </button>
+      </div>
+    </div>
+    <div class="card-body table-responsive animate__animated animate__fadeIn">
+
+    <div class="row">
+        <div class="col-6  mb-3">
+            <button class=" btn btn-primary float-left btn-sm mr-2" (click)="btnVolver()"><i class="fa fa-arrow-left"></i> Volver</button>
+        </div>
+        <div class="col-6"></div>
+      </div>
+
+       <mat-form-field>
+        <input matInput (keyup)="applyFilter(($any($event.target).value))" placeholder="Filtrar Datos">
+      </mat-form-field>
+      
+      <table mat-table [dataSource]="dataSource" class="mat-elevation-z8" matSort style="text-align:center;"  >
+        <!-- Position Column -->
+        <ng-container matColumnDef="celular" >
+          <th mat-header-cell *matHeaderCellDef style="font-weight:bold; font-size:14px; " mat-sort-header> Celular </th>
+          <td mat-cell *matCellDef="let element"  >{{element.celular}} </td>
+        </ng-container>
+
+           <!-- Name Column -->
+           <ng-container matColumnDef="actions">
+            <th mat-header-cell *matHeaderCellDef style="font-weight:bold; font-size:14px; ">Limpiar</th>
+            <td mat-cell *matCellDef="let element"> 
+                <a class="btn btn-danger" (click)="onUpdate(element.id)"><i class="fa fa-trash"></i></a>
+            </td>
+          </ng-container>
+
+          <!-- Position Column -->
+          <ng-container matColumnDef="premio"   >
+            <th mat-header-cell *matHeaderCellDef style="font-weight:bold; font-size:14px; ">Premio</th>
+            <td mat-cell *matCellDef="let element">{{element.premio | lowercase }}</td>
+          </ng-container>
+      
+        <!-- Name Column -->
+        <ng-container matColumnDef="whatsapp">
+          <th mat-header-cell *matHeaderCellDef style="font-weight:bold; font-size:14px; ">Enviar</th>
+          <td mat-cell *matCellDef="let element"><button class="btn btn-primary btn-sm" (click)="enviarPremio(element.id,element.celular, element.premio)" ><i class="fab fa-whatsapp"></i> Respuesta</button></td>
+        </ng-container>
+
+
+         <!-- Position Column -->
+         <ng-container matColumnDef="fecha">
+            <th mat-header-cell *matHeaderCellDef style="font-weight:bold; font-size:14px; ">Fecha</th>
+            <td mat-cell *matCellDef="let element"> {{element.fecha | date:'short'}} </td>
+          </ng-container>
+    
+            
+      
+      
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+      </table>
+      <mat-paginator [length]="100"
+                    [pageSize]="10"
+                    [pageSizeOptions]="[5, 10, 20]" #pagination>
+      </mat-paginator> 
+
+
+    </div>
+    <!-- /.card-body -->
+    <div class="card-footer">
+      Footer
+    </div>
+    <!-- /.card-footer-->
+  </div>
+  <!-- /.card -->
+
+</section>

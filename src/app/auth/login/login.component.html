@@ -8,9 +8,16 @@
       <div class="card-body login-card-body">
         <p class="login-box-msg">Sign in to start your session</p>
 
-        <form (ngSubmit)="onSubmit()">
+        <form (ngSubmit)="login(forma)" #forma="ngForm">
           <div class="input-group mb-3">
-            <input type="text" class="form-control" placeholder="Usuario" name="usuario" [(ngModel)]="usuario">
+            <input
+              type="email"
+              class="form-control"
+              placeholder="email"
+              name="email"
+              pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$"
+              [(ngModel)]="usuario.email"
+>
             <div class="input-group-append">
               <div class="input-group-text">
                 <span class="fas fa-envelope" style="color: rgb(48, 37, 37);"></span>
@@ -18,7 +25,7 @@
             </div>
           </div>
           <div class="input-group mb-3">
-            <input [type]="passwordFieldType" class="form-control" placeholder="Password" name="pass" [(ngModel)]="pass">
+            <input [type]="passwordFieldType" class="form-control" placeholder="Password" name="password" [(ngModel)]="usuario.password">
             <div class="input-group-append">
               
               <div class="input-group-text">
@@ -29,7 +36,7 @@
           <div class="row">
             <div class="col-8">
               <div class="icheck-primary">
-                <input type="checkbox" id="remember">
+                <input type="checkbox" id="remember" [(ngModel)]="rememberMe" name="rememberMe">
                 <label for="remember" class="ml-2">
                   Remember Me
                 </label>

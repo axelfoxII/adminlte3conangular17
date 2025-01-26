@@ -1,1 +1,268 @@
-<p>usuarios works!</p>
+<!-- Main content -->
+<section class="content">
+
+    <!-- Default box -->
+    <div class="card">
+      <div class="card-header">
+        <h3 class="card-title" style="color: black;"><i class="fa fa-users"></i>  Lista de Usuarios</h3>
+  
+        <div class="card-tools">
+          <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
+            <i class="fas fa-minus"></i>
+          </button>
+          <button type="button" class="btn btn-tool" data-card-widget="remove" title="Remove">
+            <i class="fas fa-times"></i>
+          </button>
+        </div>
+      </div>
+      <div class="card-body table-responsive animate__animated animate__fadeIn">
+  
+        
+        <button class="btn btn-primary btn-xs mt-3" (click)="limpiarForm(forma)" data-toggle="modal" data-target="#createModal"><i class="fa fa-plus"></i> Agregar</button>
+
+        <mat-form-field class="float-right">
+            <mat-label>Filtro</mat-label>
+          <input matInput (keyup)="applyFilter($event)" placeholder="Buscar" #input>
+        </mat-form-field>
+        
+        <table mat-table [dataSource]="dataSource" class="mat-elevation-z8 table animate__animated animate__fadeIn">
+        
+          <!-- Position Column -->
+          <ng-container matColumnDef="nombre">
+            <th mat-header-cell *matHeaderCellDef> Nombre </th>
+            <td  mat-cell *matCellDef="let element">{{element.nombre | titlecase}}</td>
+          </ng-container>
+        
+          <!-- Name Column -->
+          <ng-container matColumnDef="email" >
+            <th mat-header-cell *matHeaderCellDef> Email </th>
+            <td mat-cell *matCellDef="let element"> {{element.email}} </td>
+          </ng-container>
+
+           <!-- Weight Column -->
+           <ng-container matColumnDef="rol">
+            <th mat-header-cell *matHeaderCellDef>Roles</th>
+            <td mat-cell *matCellDef="let element">
+              <button  *ngIf="element.rol === true"  class="btn btn-success btn-xs mb-2" (click)="cambiarRol(element)">
+                Admin 
+              </button>
+          
+              <button *ngIf="element.rol === false" class="btn btn-primary btn-xs mb-2" (click)="cambiarRol(element)">
+                Empleado
+              </button>
+            </td>
+          </ng-container>
+        
+          <!-- Weight Column -->
+          <ng-container matColumnDef="estado">
+            <th mat-header-cell *matHeaderCellDef>Estado</th>
+            <td mat-cell *matCellDef="let element">
+              <button mat-button color="primary" *ngIf="element.estado === true"  class="mb-2" (click)="cambiarEstado(element)">
+                <i class="fa fa-unlock-alt"></i><small><strong> Desbloqueado</strong></small> 
+              </button>
+          
+              <button mat-button color="warn" *ngIf="element.estado === false" class="mb-2" (click)="cambiarEstado(element)">
+                <i class="fa fa-lock"></i> <small><strong> Bloqueado</strong></small>
+              </button>
+            </td>
+          </ng-container>
+          
+        
+         
+          <ng-container matColumnDef="actions">
+            <th mat-header-cell *matHeaderCellDef> Acciones </th>
+            <td mat-cell *matCellDef="let element; let i = index;"> 
+            
+              <button class="btn btn-warning btn-xs  mr-2" (click)="obtenerDataUsuario(element.id)" data-toggle="modal" data-target="#editModal"><i class="fa fa-pencil-alt"></i></button>
+              <button class="btn btn-danger btn-xs " (click)="borrarUsuario(element)"><i class="fa fa-trash-alt"></i></button>
+            
+            
+            </td>
+          </ng-container>
+  
+        
+          <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+          <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+        
+          <!-- Row shown when there is no matching data. -->
+          <tr class="mat-row" *matNoDataRow>
+            <td class="mat-cell" colspan="4">No data matching the filter "{{input.value}}"</td>
+          </tr>
+        </table>
+        <mat-paginator [pageSizeOptions]="[5, 10, 20]"
+        showFirstLastButtons >
+        </mat-paginator>
+      </div>
+      <!-- /.card-body -->
+      <div class="card-footer">
+        Footer
+      </div>
+      <!-- /.card-footer-->
+    </div>
+    <!-- /.card -->
+  
+  </section>
+
+  <!-- Modal CREATE-->
+  <div class="modal fade" id="createModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content bg-dark text-light">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">
+            <i class="fa fa-plus" aria-hidden="true"></i> Agregar Usuario
+          </h5>
+          <button type="button" class="close text-light" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <form (ngSubmit)="crearUsuario(forma)" #forma="ngForm"  autocomplete="off">
+            <!-- Nombre -->
+            <div class="form-group">
+              <label for="nombre">Nombre</label>
+              <input 
+                [(ngModel)]="usuario.nombre" 
+                type="text" 
+                id="nombre" 
+                class="form-control" 
+                placeholder="Ingrese su nombre" 
+                name="nombre" 
+                required>
+            </div>
+  
+            <!-- Email -->
+            <div class="form-group">
+              <label for="email">Email</label>
+              <input 
+                [(ngModel)]="usuario.email" 
+                type="email" 
+                id="email" 
+                class="form-control" 
+                placeholder="Ingrese su email" 
+                autocomplete="username"
+                name="email" 
+                required>
+            </div>
+  
+            <!-- Password -->
+            <div class="form-group">
+              <label for="password">Contraseña</label>
+              <input 
+                [(ngModel)]="usuario.password" 
+                type="password" 
+                id="password" 
+                class="form-control" 
+                placeholder="Ingrese su contraseña" 
+                name="password" 
+                autocomplete="current-password"
+                required>
+            </div>
+  
+            <!-- Confirmar Password -->
+            <div class="form-group">
+              <label for="password2">Confirmar Contraseña</label>
+              <input 
+                type="password" 
+                id="password2" 
+                class="form-control" 
+                ngModel 
+                placeholder="Confirme su contraseña" 
+                name="password2" 
+                autocomplete="new-password"
+                required>
+            </div>
+  
+            <!-- Footer del modal -->
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+              <button type="submit" class="btn btn-primary">Guardar</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <!-- Modal EDIT-->
+<div class="modal fade" id="editModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content bg-dark text-light">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">
+          <i class="fas fa-user-edit"></i> Editar Usuario
+        </h5>
+        <button type="button" class="close text-light" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form (ngSubmit)="editarUsuario(form)" #form="ngForm" autocomplete="off">
+          <!-- Nombre -->
+          <div class="form-group">
+            <label for="nombreEdit">Nombre</label>
+            <input
+              type="text"
+              id="nombreEdit"
+              class="form-control"
+              placeholder="Ingrese su nombre"
+              name="nombre"
+              [(ngModel)]="usuario.nombre"
+              required
+            />
+          </div>
+
+          <!-- Email -->
+          <div class="form-group">
+            <label for="emailEdit">Email</label>
+            <input
+              type="email"
+              id="emailEdit"
+              class="form-control"
+              placeholder="Ingrese su email"
+              name="email"
+              [(ngModel)]="usuario.email"
+              autocomplete="username"
+              disabled
+              required
+            />
+          </div>
+
+          <!-- Password antiguo -->
+          <div class="form-group">
+            <label for="passwordEdit">Password Antiguo</label>
+            <input
+              type="password"
+              id="passwordEdit"
+              class="form-control"
+              placeholder="Ingrese su contraseña antigua"
+              name="password"
+              autocomplete="current-password"
+              ngModel
+              required
+            />
+          </div>
+
+          <!-- Password Nuevo -->
+          <div class="form-group">
+            <label for="passwordEditNew">Password Nuevo</label>
+            <input
+              type="password"
+              id="passwordEditNew"
+              class="form-control"
+              placeholder="Ingrese su contraseña nueva"
+              name="password2"
+              autocomplete="new-password"
+              ngModel
+              required
+            />
+          </div>
+
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+            <button type="submit" class="btn btn-primary">Guardar</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

@@ -13,6 +13,7 @@ import { MatPaginator } from '@angular/material/paginator';
 })
 export class HeroesComponent implements OnInit, AfterViewInit {
 
+
   heroes: Heroes[] = [];
   dataSource!: MatTableDataSource<Heroes>;
 
@@ -48,5 +49,6 @@ export class HeroesComponent implements OnInit, AfterViewInit {
     this.dataSource.filter = filterValue.trim().toLowerCase();
   }
 
+  
   
 }

@@ -10,6 +10,11 @@ import { authGuard } from '../guards/auth.guard';
 import { ReportesComponent } from './reportes/reportes.component'; // Añade otros componentes independientes aquí
 import { IndependienteComponent } from './independiente/independiente.component';
 import { ItemindependienteComponent } from './itemindependiente/itemindependiente.component';
+import { ClientesComponent } from './clientes/clientes.component';
+import { RuletaComponent } from './ruleta/ruleta.component';
+import { ParticipantesComponent } from './participantes/participantes.component';
+import { AyudaRuletaComponent } from './ayuda-ruleta/ayuda-ruleta.component';
+import { ControlUsuariosComponent } from './control-usuarios/control-usuarios.component';
 
 const routes: Routes = [
   {
@@ -19,12 +24,15 @@ const routes: Routes = [
     children: [
       { path: '', component: DashboardComponent, data: { titulo: 'Dashboard' } },
       { path: 'usuarios', component: UsuariosComponent, data: { titulo: 'Usuarios' } },
-      { path: 'productos', component: ProductosComponent, data: { titulo: 'Productos' } },
-      { path: 'heroes', component: HeroesComponent, data: { titulo: 'heroes' } },
-      { path: 'toaster', component: ToasterComponent, data: { titulo: 'toaster' } },
+      { path: 'clientes', component: ClientesComponent, data: { titulo: 'Clientes' } },
+      { path: 'ruleta', component: RuletaComponent, data: { titulo: 'Ruleta' } },
+      { path: 'participantes', component: ParticipantesComponent, data: { titulo: 'Participantes' } },
+      { path: 'help-ruleta', component: AyudaRuletaComponent, data: { titulo: 'Ayuda-Ruleta' } },
+      { path: 'control-users', component: ControlUsuariosComponent, data: { titulo: 'Control-Users' } },
+      /*{ path: 'toaster', component: ToasterComponent, data: { titulo: 'toaster' } }, */
     ]
   },
-  { path: 'reportes', component: ReportesComponent, canActivate: [authGuard], data: { titulo: 'Reportes' } },
+  /* { path: 'reportes', component: ReportesComponent, canActivate: [authGuard], data: { titulo: 'Reportes' } },
   {
     path: 'independiente',
     component: PagesComponent,
@@ -33,7 +41,7 @@ const routes: Routes = [
       { path: '', component: IndependienteComponent, data: { titulo: 'Independiente' } },
       { path: 'itemindependiente', component: ItemindependienteComponent, data: { titulo: 'Itemindependiente' } },
     ]
-  },
+  }, */
 ];
 
 @NgModule({
